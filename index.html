@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedTelecom Smart AI Agent - Campaign Manager</title>
+    <!-- Modern Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Premium Ambient Glow Elements -->
+    <div class="ambient-glow glow-red"></div>
+    <div class="ambient-glow glow-blue"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="logo-circle"></span>
+                <h2>RedTelecom <span class="accent">AI</span></h2>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" id="nav-dashboard">Dashboard</button>
+                <button class="nav-item" id="nav-campaigns">Campaign Manager</button>
+                <button class="nav-item" id="nav-sandbox">Single Sandbox</button>
+                <button class="nav-item" id="nav-logs">Campaign Logs</button>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="java-badge">
+                    <span class="pulse"></span> Java Gateway Connected
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Dashboard Viewport -->
+        <main class="main-content">
+            <header class="main-header">
+                <div>
+                    <h1>Smart AI Agent</h1>
+                    <p class="subtitle">Personalized Message Generation & Campaign Automation</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" id="btn-run-batch">Run Batch Campaign</button>
+                </div>
+            </header>
+
+            <!-- SECTION: DASHBOARD HOME -->
+            <section id="sec-dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Customers</h3>
+                        <p class="stat-value" id="stat-total">--</p>
+                        <span class="stat-change text-green">Synced from CSV</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Avg. Offer Value</h3>
+                        <p class="stat-value" id="stat-avg-price">-- DA</p>
+                        <span class="stat-change text-blue">Optimal Value Range</span>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Languages</h3>
+                        <p class="stat-value" id="stat-languages">FR / Darija / Arabic</p>
+                        <span class="stat-change text-pink">High Multi-lingual Match</span>
+                    </div>
+                </div>
+
+                <div class="grid-two-cols mt-4">
+                    <!-- Segment Explorer -->
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h2>Customer Segmentation Explorer</h2>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table" id="table-customers">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Persona</th>
+                                        <th>Lang</th>
+                                        <th>Offer</th>
+                                        <th>Price (DA)</th>
+                                        <th>Style</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Persona Breakdown -->
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h2>Persona Breakdown</h2>
+                        </div>
+                        <div class="chart-mockup" id="persona-breakdown-list">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CAMPAIGN MANAGER -->
+            <section id="sec-campaigns" class="content-section">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Active Campaign Generation Room</h2>
+                        <div class="panel-actions">
+                            <span class="badge" id="batch-progress-badge">Idle</span>
+                        </div>
+                    </div>
+                    <div class="campaign-instructions mb-4">
+                        <p>Generate matching messages for all segments in <strong>cliensts_test2.csv</strong> using hardcoded Mistral 7b API & RAG matching patterns from <strong>generated_sms.csv</strong>.</p>
+                    </div>
+                    <div class="table-container max-height-table">
+                        <table class="data-table" id="table-campaign-messages">
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Persona</th>
+                                    <th>Offer</th>
+                                    <th>Tone</th>
+                                    <th>Generated SMS</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6" class="text-center text-muted">No messages generated yet. Click "Start Campaign Generation" to begin.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer mt-4 text-right">
+                        <button class="btn btn-secondary" id="btn-cancel-campaign">Reset</button>
+                        <button class="btn btn-accent" id="btn-approve-campaign" disabled>Approve & Send to Gateway</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: SINGLE SANDBOX -->
+            <section id="sec-sandbox" class="content-section">
+                <div class="grid-two-cols">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h2>Draft Profile Generation</h2>
+                        </div>
+                        <form id="form-sandbox" class="sandbox-form">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" id="sb-firstname" class="form-control" placeholder="Karim" required>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Persona</label>
+                                    <select id="sb-persona" class="form-control">
+                                        <option value="Young Digital User">Young Digital User</option>
+                                        <option value="Digital Heavy User">Digital Heavy User</option>
+                                        <option value="Balanced User">Balanced User</option>
+                                        <option value="Voice Heavy User">Voice Heavy User</option>
+                                        <option value="Inactive Young User">Inactive Young User</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Language</label>
+                                    <select id="sb-language" class="form-control">
+                                        <option value="FR">French (FR)</option>
+                                        <option value="AR_LATIN">Darija (AR_LATIN)</option>
+                                        <option value="AR_LIT">Arabic (AR_LIT)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Offer Package</label>
+                                    <input type="text" id="sb-offer" class="form-control" placeholder="TikTok Creator 220Go" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Price (DA)</label>
+                                    <input type="number" id="sb-price" class="form-control" placeholder="4700" required>
+                                </div>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Tone</label>
+                                    <select id="sb-tone" class="form-control">
+                                        <option value="Young">Young</option>
+                                        <option value="Premium">Premium</option>
+                                        <option value="Friendly">Friendly</option>
+                                        <option value="Professional">Professional</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Usage Profile</label>
+                                    <input type="text" id="sb-usage" class="form-control" placeholder="Social Media" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Message Style</label>
+                                <input type="text" id="sb-style" class="form-control" placeholder="Creator" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Generate Instant SMS</button>
+                        </form>
+                    </div>
+
+                    <div class="panel flex-col-center">
+                        <div class="panel-header w-100">
+                            <h2>SMS Preview Screen</h2>
+                        </div>
+                        <div class="phone-container">
+                            <div class="phone-screen">
+                                <div class="phone-header">
+                                    <div class="phone-status">RedTelecom AI</div>
+                                </div>
+                                <div class="chat-bubble received" id="preview-bubble">
+                                    Fill the profile parameters and hit generate to view the premium layout message preview...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CAMPAIGN LOGS -->
+            <section id="sec-logs" class="content-section">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Gateway Transaction Log database</h2>
+                    </div>
+                    <div class="campaign-logs-list" id="gateway-logs-list">
+                        <!-- Populated dynamically -->
+                        <div class="text-center text-muted p-4">No campaign runs stored yet.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast">Successfully completed.</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
