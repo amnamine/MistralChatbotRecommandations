@@ -3,7 +3,7 @@ import pandas as pd
 import requests
 import json
 
-MISTRAL_API_KEY = ""
+MISTRAL_API_KEY = "yeXpmB5BXvzjNEcJhCWJtIfNPV72ZqXW"
 MISTRAL_API_URL = "https://api.mistral.ai/v1/chat/completions"
 
 # Load RAG reference examples
