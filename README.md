@@ -10,12 +10,12 @@ The application is built using a modern decoupled architecture:
 
 ```mermaid
 graph TD
-    A[Frontend Dashboard: HTML5/CSS3/JS] -->|Requests / Port 8080| B[Java Campaign Gateway]
-    B -->|Logs Campaigns| C[(campaign_runs.json)]
-    B -->|Proxy Requests / Port 8000| D[FastAPI Backend Server]
-    D -->|Loads Context| E[cliensts_test2.csv]
-    D -->|Queries RAG Examples| F[generated_sms (2).csv]
-    D -->|API Calls| G[Mistral 7B LLM API]
+    A["Frontend Dashboard: HTML5/CSS3/JS"] -->|Requests / Port 8080| B["Java Campaign Gateway"]
+    B -->|Logs Campaigns| C[("campaign_runs.json")]
+    B -->|Proxy Requests / Port 8000| D["FastAPI Backend Server"]
+    D -->|Loads Context| E["cliensts_test2.csv"]
+    D -->|Queries RAG Examples| F["generated_sms (2).csv"]
+    D -->|API Calls| G["Mistral 7B LLM API"]
 ```
 
 ### 1. AI Messaging Engine ([sms_generator.py](file:///d:/AMINE2/COURS%20FAC/travaux/OO_Chatbot/sms_generator.py))
