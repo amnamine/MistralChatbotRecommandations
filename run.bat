@@ -4,17 +4,15 @@ echo ==============================================================
 echo        LAUNCHING SMART AI TELECOM CAMPAIGN DASHBOARD
 echo ==============================================================
 
-:: Check if Python FastAPI is already running on port 8000
+REM Check if Python FastAPI is already running on port 8000
 echo Checking for active FastAPI instance on port 8000...
 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8000 ^| findstr LISTENING') do (
-    echo [System] Found process on port 8000 (PID: %%a). Terminating old instance...
     taskkill /F /PID %%a
 )
 
-:: Check if Java Gateway is already running on port 8080
+REM Check if Java Gateway is already running on port 8080
 echo Checking for active Java Gateway instance on port 8080...
 for /f "tokens=5" %%a in ('netstat -ano ^| findstr :8080 ^| findstr LISTENING') do (
-    echo [System] Found process on port 8080 (PID: %%a). Terminating old instance...
     taskkill /F /PID %%a
 )
 
